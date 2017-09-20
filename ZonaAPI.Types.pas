@@ -16,7 +16,7 @@ type
     name_id: string;
     name_rus: string;
     rating: Single;
-    rating_imdb_count: single;
+    rating_imdb_count: Single;
     rating_kinopoisk: Single;
     rating_kinopoisk_count: Integer;
     serial: Boolean;
@@ -48,21 +48,19 @@ type
 
 implementation
 
-
 { TznCategory }
 
 constructor TznCategory.Create;
 begin
- // Items := TObjectList<TznItem>.Create;
+  // Items := TObjectList<TznItem>.Create;
   pagination := TznPagination.Create;
 end;
 
 destructor TznCategory.Destroy;
 begin
-//  Items.Free;
+  // Items.Free;
   pagination.Free;
   inherited;
 end;
 
 end.
-

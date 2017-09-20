@@ -1,0 +1,28 @@
+object Form7: TForm7
+  Left = 0
+  Top = 0
+  Caption = 'Form7'
+  ClientHeight = 324
+  ClientWidth = 337
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 3
+  object grp1: TGroupBox
+    Align = Top
+    Size.Width = 337.000000000000000000
+    Size.Height = 65.000000000000000000
+    Size.PlatformDefault = False
+    Text = #1046#1072#1085#1088
+    TabOrder = 0
+    object cbbGenre: TComboBox
+      Align = Bottom
+      Position.Y = 33.000000000000000000
+      Size.Width = 337.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      OnChange = cbbGenreChange
+    end
+  end
+end

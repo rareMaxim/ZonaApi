@@ -8,7 +8,8 @@ uses
   System.Net.HttpClient,
   System.SysUtils,
   ZonaAPI.Types in 'ZonaAPI.Types.pas',
-  ZonaAPI in 'ZonaAPI.pas';
+  ZonaAPI in 'ZonaAPI.pas',
+  ZonaAPI.FilterProcessor in 'ZonaAPI.FilterProcessor.pas';
 
 procedure Test;
 var

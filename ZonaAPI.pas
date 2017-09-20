@@ -3,32 +3,37 @@ unit ZonaAPI;
 interface
 
 uses
-  ZonaAPI.Types,
-  DJSON,
-  System.Net.HttpClient,
-  DJSON.Params;
+  ZonaAPI.Types, ZonaAPI.FilterProcessor, DJSON, System.Net.HttpClient, DJSON.Params;
 
 type
-  TznGenres = ();
-
-  TznFilter = class
-  end;
-
-  TznCatalog = class
-  end;
-
   TZonaAPI = class
   private
+    FFilter: TznFilterProcessor;
     function SetupDjson: IdjParams;
     function ZonaAPI(const AUrl: string): TznCategory;
     procedure SetupHttp(AHttp: THTTPClient);
   public
     function GetSeries: TznCategory;
+    function GetFilms: TznCategory;
+    constructor Create;
+    destructor Destroy; override;
+    property Filter: TznFilterProcessor read FFilter write FFilter;
   end;
 
 implementation
 
 { TZonaAPI }
+
+constructor TZonaAPI.Create;
+begin
+  FFilter := TznFilterProcessor.Create;
+end;
+
+destructor TZonaAPI.Destroy;
+begin
+  FFilter.Free;
+  inherited;
+end;
 
 function TZonaAPI.GetSeries: TznCategory;
 begin
@@ -39,6 +44,7 @@ function TZonaAPI.SetupDjson: IdjParams;
 begin
   Result := dj.DefaultByFields;
   Result.Engine := TdjEngine.eJDO;
+  Result.TypeAnnotations := False;
 end;
 
 procedure TZonaAPI.SetupHttp(AHttp: THTTPClient);
